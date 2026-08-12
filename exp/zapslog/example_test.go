@@ -28,8 +28,8 @@ import (
 	"net"
 	"time"
 
-	"go.uber.org/zap"
-	"go.uber.org/zap/exp/zapslog"
+	"github.com/ngxstorage/zap"
+	"github.com/ngxstorage/zap/exp/zapslog"
 )
 
 type Password string

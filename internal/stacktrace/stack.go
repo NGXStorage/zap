@@ -25,9 +25,9 @@ package stacktrace
 import (
 	"runtime"
 
-	"go.uber.org/zap/buffer"
-	"go.uber.org/zap/internal/bufferpool"
-	"go.uber.org/zap/internal/pool"
+	"github.com/ngxstorage/zap/buffer"
+	"github.com/ngxstorage/zap/internal/bufferpool"
+	"github.com/ngxstorage/zap/internal/pool"
 )
 
 var _stackPool = pool.New(func() *Stack {

@@ -26,9 +26,9 @@ import (
 	"time"
 
 	"go.uber.org/multierr"
-	"go.uber.org/zap"
-	"go.uber.org/zap/internal/ztest"
-	"go.uber.org/zap/zapcore"
+	"github.com/ngxstorage/zap"
+	"github.com/ngxstorage/zap/internal/ztest"
+	"github.com/ngxstorage/zap/zapcore"
 )
 
 var (

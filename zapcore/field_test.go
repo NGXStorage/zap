@@ -30,10 +30,10 @@ import (
 
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"go.uber.org/zap"
+	"github.com/ngxstorage/zap"
 
 	//revive:disable:dot-imports
-	. "go.uber.org/zap/zapcore"
+	. "github.com/ngxstorage/zap/zapcore"
 )
 
 type users int

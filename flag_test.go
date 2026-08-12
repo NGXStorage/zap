@@ -25,7 +25,7 @@ import (
 	"io"
 	"testing"
 
-	"go.uber.org/zap/zapcore"
+	"github.com/ngxstorage/zap/zapcore"
 
 	"github.com/stretchr/testify/assert"
 )
