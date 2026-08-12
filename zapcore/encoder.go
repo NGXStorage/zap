@@ -290,6 +290,21 @@ func ShortCallerEncoder(caller EntryCaller, enc PrimitiveArrayEncoder) {
 	enc.AppendString(caller.TrimmedPath())
 }
 
+// SpecialFullCallerEncoder serializes a caller in /full/path/to/package/file:line
+// format, padding the line number to the configured SpecialEncodeCallerLength.
+func SpecialFullCallerEncoder(caller EntryCaller, enc PrimitiveArrayEncoder) {
+	// TODO: consider using a byte-oriented API to save an allocation.
+	enc.AppendString(caller.SpecialFullPath())
+}
+
+// SpecialShortCallerEncoder serializes a caller in package/file:line format,
+// trimming all but the final directory from the full path and padding the line
+// number to the configured SpecialEncodeCallerLength.
+func SpecialShortCallerEncoder(caller EntryCaller, enc PrimitiveArrayEncoder) {
+	// TODO: consider using a byte-oriented API to save an allocation.
+	enc.AppendString(caller.SpecialTrimmedPath())
+}
+
 // UnmarshalText unmarshals text to a CallerEncoder. "full" is unmarshaled to
 // FullCallerEncoder and anything else is unmarshaled to ShortCallerEncoder.
 func (e *CallerEncoder) UnmarshalText(text []byte) error {
@@ -347,6 +362,8 @@ type EncoderConfig struct {
 	EncodeTime     TimeEncoder     `json:"timeEncoder" yaml:"timeEncoder"`
 	EncodeDuration DurationEncoder `json:"durationEncoder" yaml:"durationEncoder"`
 	EncodeCaller   CallerEncoder   `json:"callerEncoder" yaml:"callerEncoder"`
+	// Configures the length of paths to be used in the caller encoder.
+	SpecialEncodeCallerLength int `json:"specialEncodeCallerLength" yaml:"specialEncodeCallerLength"`
 	// Unlike the other primitive type encoders, EncodeName is optional. The
 	// zero value falls back to FullNameEncoder.
 	EncodeName NameEncoder `json:"nameEncoder" yaml:"nameEncoder"`
